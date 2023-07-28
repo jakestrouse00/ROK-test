@@ -33,12 +33,16 @@ def take_screenshot_of_app(app_title):
     except IndexError:
         print(f'Application with title "{app_title}" not found.')
 
+if __name__ == '__main__':
 
-app_title = "Rise of Kingdoms"
-if app_title in all_system_titles():
-    # Replace 'Your App Title' with the actual title of the application you want to capture
-    take_screenshot_of_app(app_title)
+    try:
+        app_title = "Rise of Kingdoms"
+        if app_title in all_system_titles():
+            # Replace 'Your App Title' with the actual title of the application you want to capture
+            take_screenshot_of_app(app_title)
+    except Exception as e:
+        print(e)
 
 
 
-input("hold")
+    input("hold")

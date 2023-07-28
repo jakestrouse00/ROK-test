@@ -3,7 +3,7 @@ import psutil
 
 def get_app_pid_by_name(app_name):
     for process in psutil.process_iter(['pid', 'name']):
-        if process.name().lower().startswith("r"):
+        if process.name().lower().startswith("m"):
             print(process)
     return None
 

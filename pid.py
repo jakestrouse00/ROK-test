@@ -3,6 +3,7 @@ import psutil
 
 def get_app_pid_by_name(app_name):
     for process in psutil.process_iter(['pid', 'name']):
+        print(process)
         if process.info['name'] == app_name:
             return process.info['pid']
     return None

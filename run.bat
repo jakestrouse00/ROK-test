@@ -1,2 +1,2 @@
-@REM python main.py
-python pid.py
+python main.py
+@REM python pid.py

@@ -1,7 +1,8 @@
 import pygetwindow as gw
 import pyautogui
 from typing import *
-from pygetwindow import win32functions
+import psutil
+from pywinauto import Application
 
 
 def all_system_titles() -> List[str]:
@@ -10,6 +11,13 @@ def all_system_titles() -> List[str]:
 
     # Print the titles of all open windows
     return all_window_titles
+
+
+def get_app_pid():
+    for process in psutil.process_iter(['pid', 'name']):
+        if process.name() == "MASS.exe":
+            return process.pid
+    return None
 
 
 def take_screenshot_of_app(app_title):
@@ -21,7 +29,6 @@ def take_screenshot_of_app(app_title):
         # # Set the application window to cover the entire screen
         # app_window.moveTo(0, 0)
         # app_window.resizeTo(screen_width, screen_height)
-        win32functions.set_foreground_window(app_window._hWnd)
         # Get the position and size of the application window
         x, y, width, height = app_window.left, app_window.top, app_window.width, app_window.height
 
@@ -34,16 +41,19 @@ def take_screenshot_of_app(app_title):
     except IndexError:
         print(f'Application with title "{app_title}" not found.')
 
+
 if __name__ == '__main__':
 
     try:
         app_title = "Rise of Kingdoms"
         if app_title in all_system_titles():
+            pid = get_app_pid()
+            print(pid)
+            app = Application().connect(process=pid)
+            app.top_window().set_focus()
             # Replace 'Your App Title' with the actual title of the application you want to capture
             take_screenshot_of_app(app_title)
     except Exception as e:
         print(e)
-
-
 
     input("hold")

@@ -49,14 +49,15 @@ if __name__ == '__main__':
         if app_title in all_system_titles():
             pid = get_app_pid()
             print(pid)
-            app = Application(backend="uia").connect(process=pid)
-            print(app.process)
-
-            app = Application(backend="uia").connect(process=12856)
-            print(app.process)
-
             app = Application().connect(process=12856)
             print(app.process)
+            # app = Application(backend="uia").connect(process=pid)
+            # print(app.process)
+
+            # app = Application(backend="uia").connect(process=12856)
+            # print(app.process)
+
+
             # app.top_window().set_focus()
             # Replace 'Your App Title' with the actual title of the application you want to capture
             take_screenshot_of_app(app_title)

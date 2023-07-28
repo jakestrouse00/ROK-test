@@ -15,6 +15,7 @@ def take_screenshot_of_app(app_title):
     try:
         # Search for the application window by its title
         app_window = gw.getWindowsWithTitle(app_title)[0]
+        app_window.maximize()
 
         # Get the position and size of the application window
         x, y, width, height = app_window.left, app_window.top, app_window.width, app_window.height

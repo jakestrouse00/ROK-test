@@ -1,6 +1,7 @@
 import pygetwindow as gw
 import pyautogui
 from typing import *
+from pygetwindow import win32functions
 
 
 def all_system_titles() -> List[str]:
@@ -20,7 +21,7 @@ def take_screenshot_of_app(app_title):
         # # Set the application window to cover the entire screen
         # app_window.moveTo(0, 0)
         # app_window.resizeTo(screen_width, screen_height)
-
+        win32functions.set_foreground_window(app_window._hWnd)
         # Get the position and size of the application window
         x, y, width, height = app_window.left, app_window.top, app_window.width, app_window.height
 

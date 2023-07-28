@@ -16,7 +16,7 @@ def all_system_titles() -> List[str]:
 def get_app_pid():
     for process in psutil.process_iter(['pid', 'name']):
         if process.name() == "MASS.exe":
-            return process.pid
+            return int(process.pid)
     return None
 
 
@@ -49,8 +49,9 @@ if __name__ == '__main__':
         if app_title in all_system_titles():
             pid = get_app_pid()
             print(pid)
-            app = Application(backend="uia").connect(path='MASS.exe')
-            app.top_window().set_focus()
+            app = Application(backend="uia").connect(process=pid)
+            print(app.process)
+            # app.top_window().set_focus()
             # Replace 'Your App Title' with the actual title of the application you want to capture
             take_screenshot_of_app(app_title)
     except Exception as e:

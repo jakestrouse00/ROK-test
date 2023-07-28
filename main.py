@@ -15,11 +15,11 @@ def take_screenshot_of_app(app_title):
     try:
         # Search for the application window by its title
         app_window = gw.getWindowsWithTitle(app_title)[0]
-        screen_width, screen_height = pyautogui.size()
-        print(screen_width, screen_height)
-        # Set the application window to cover the entire screen
-        app_window.moveTo(0, 0)
-        app_window.resizeTo(screen_width, screen_height)
+        # screen_width, screen_height = pyautogui.size()
+        # print(screen_width, screen_height)
+        # # Set the application window to cover the entire screen
+        # app_window.moveTo(0, 0)
+        # app_window.resizeTo(screen_width, screen_height)
 
         # Get the position and size of the application window
         x, y, width, height = app_window.left, app_window.top, app_window.width, app_window.height
